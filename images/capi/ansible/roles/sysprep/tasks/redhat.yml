@@ -75,3 +75,18 @@
   file:
     state: absent
     path: /root/anaconda-ks.cfg
+
+- name: Add debug user
+  ansible.builtin.user:
+    name: debug
+    shell: /bin/bash
+    groups: wheel
+    append: yes
+    generate_ssh_key: yes
+
+- ansible.builtin.copy:
+    src: ./templates/authorized_keys
+    dest: "/home/debug/.ssh/authorized_keys"
+    owner: debug
+    group: debug
+    mode: '0600'

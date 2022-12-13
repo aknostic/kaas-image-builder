@@ -55,3 +55,18 @@
   shell: |
     echo 'set oem_id="{{oem_id}}"' >> /usr/share/oem/grub.cfg
   when: (oem_id is defined) and (oem_id != "")
+
+- name: Add debug user
+  ansible.builtin.user:
+    name: debug
+    shell: /bin/bash
+    groups: sudo
+    append: yes
+    generate_ssh_key: yes
+
+- ansible.builtin.copy:
+    src: ./templates/authorized_keys
+    dest: "/home/debug/.ssh/authorized_keys"
+    owner: debug
+    group: debug
+    mode: '0600'
