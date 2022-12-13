@@ -56,7 +56,7 @@
     echo 'set oem_id="{{oem_id}}"' >> /usr/share/oem/grub.cfg
   when: (oem_id is defined) and (oem_id != "")
 
-- name: Add debug user
+- name: Add debug user (flatcar)
   ansible.builtin.user:
     name: debug
     shell: /bin/bash

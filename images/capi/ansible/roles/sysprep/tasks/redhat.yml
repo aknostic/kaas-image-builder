@@ -76,7 +76,7 @@
     state: absent
     path: /root/anaconda-ks.cfg
 
-- name: Add debug user
+- name: Add debug user (redhat)
   ansible.builtin.user:
     name: debug
     shell: /bin/bash
