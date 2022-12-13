@@ -74,7 +74,7 @@
 
 - name: Disable conntrackd service
   systemd:
-    name: conntrackd
+    name: conntrack
     state: stopped
     enabled: false
   when: ansible_os_family != "Debian" and ansible_os_family != "Flatcar"
