@@ -72,12 +72,12 @@
   shell: sed -ri '/\sswap\s/s/^#?/#/' /etc/fstab
   when: ansible_memory_mb.swap.total != 0
 
-# - name: Disable conntrackd service
-#   systemd:
-#     name: conntrackd
-#     state: stopped
-#     enabled: false
-#   when: ansible_os_family != "Debian" and ansible_os_family != "Flatcar"
+- name: Disable conntrackd service
+  systemd:
+    name: conntrackd
+    state: stopped
+    enabled: false
+  when: ansible_os_family != "Debian" and ansible_os_family != "Flatcar"
 
 - name: Ensure auditd is running and comes on at reboot
   service:
